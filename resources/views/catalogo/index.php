@@ -6,6 +6,6 @@
     <title>ADIRA: Aluguel Colaborativo e Economia Compartilhada</title>
 </head>
 <body>
-    
+    <h1>TELA DE HOMEPAGE E CATÁLOGO</h1>
 </body>
 </html>
