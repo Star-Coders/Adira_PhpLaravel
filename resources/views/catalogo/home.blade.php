@@ -7,5 +7,8 @@
 </head>
 <body>
     <h1>TELA DE HOMEPAGE E CATÁLOGO</h1>
+    <div class="container">
+        @include('catalogo.carouselGeral');
+    </div>
 </body>
 </html>
