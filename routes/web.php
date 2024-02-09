@@ -60,7 +60,7 @@ Route::group([
 
     Route::view('fazer-aluguel', 'produtos/fazerAluguel');
 
-    Route::view('solicitar-produto', 'produtos/solicitarProduto');
+    Route::view('solicitar-produto', 'produtos/solicitarProduto')->name('solicitar-produto');
 });
 
 // TELAS USUARIO
