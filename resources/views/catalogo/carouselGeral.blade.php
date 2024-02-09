@@ -1,11 +1,28 @@
-{{-- SQL SELECT para selecionar os dados
-$exemplo = $dbConecta->prepare('SELECT id,fotografia,categoria,descricao FROM itens ORDER BY RAND() LIMIT 77');
-$exemplo->execute(); --}}
 
 @php
+
+// Definir as variáveis de ambiente
+$dbConnection = env('DB_CONNECTION');
+$dbHost = env('DB_HOST');
+$dbName = env('DB_DATABASE');
+$dbUsername = env('DB_USERNAME');
+$dbPassword = env('DB_PASSWORD');
+
+// Instanciar o objeto PDO
+$pdo = new PDO(
+    "$dbConnection:host=$dbHost;dbname=$dbName",
+    $dbUsername,
+    $dbPassword
+);
+
+// Busca no database
+$statement = $pdo->prepare('SELECT id,fotografia,categoria,descricao FROM itens ORDER BY RAND() LIMIT 77');
+$statement->execute();
+
+
   $carousel = []; $i=0;
 
-  while($cardinfo = $exemplo->fetchAll(PDO::FETCH_ASSOC)){
+  while($cardinfo = $statement->fetchAll(PDO::FETCH_ASSOC)){
     
     $carousel[$i] = $cardinfo;
     $i++;
@@ -15,17 +32,17 @@ $exemplo->execute(); --}}
 <div id="carouselGeral" class="carousel slide">
   <div class="carousel-inner">
 
-    @for($i=0; $i<sizeof($carousel); $i++){
+    @for($i=0; $i<sizeof($carousel); $i++)
 
-      @foreach($carousel[$i] as $card){
-        $active = ($i == 0)? 'active' : '';
+      @foreach($carousel[$i] as $card)
+        @php $active = ($i == 0)? 'active' : ''; @endphp
 
-        <div class="carousel-item <?php echo $active ?>">
+        <div class="carousel-item @php echo $active @endphp">
           <div class="card" style="width: 18rem;">
-            <img src="<?php echo $card['fotografia'] ?>" class="card-img-top" alt="Produto para alugar.">
+            <img src="@php echo $card['fotografia'] @endphp" class="card-img-top" alt="Produto para alugar.">
             <div class="card-body">
-              <h5 class="card-title"><?php echo $card['categoria']; ?></h5>
-              <p class="card-text"><?php echo $card['descricao']; ?></p>
+              <h5 class="card-title">@php echo $card['categoria']; @endphp</h5>
+              <p class="card-text">@php echo $card['descricao']; @endphp</p>
               <a href="solicitar-produto" class="btn btn-primary"><strong>QUERO ALUGAR</strong></a>
             </div>
           </div>
