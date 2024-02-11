@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class PedidoModel extends Model
 {
     use HasFactory;
+
+    protected $table = 'ELVYNGTHON.pedido_models';
 }

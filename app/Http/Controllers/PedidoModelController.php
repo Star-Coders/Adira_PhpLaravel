@@ -12,7 +12,12 @@ class PedidoModelController extends Controller
      */
     public function index()
     {
-        //
+        $pedidos = PedidoModel::all();
+        $paginas = PedidoModel::paginate(11);
+        return view('admin/todos-pedidos',[
+            'ELVYNGTHON.pedidos'=>$pedidos,
+            'ELVYNGTHON.pedidos'=>$paginas
+        ]);
     }
 
     /**
@@ -28,7 +33,7 @@ class PedidoModelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $id = $request->input('id');
     }
 
     /**
