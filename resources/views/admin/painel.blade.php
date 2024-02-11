@@ -7,6 +7,12 @@
     <title>PAINEL DO ADMINISTRADOR DO SISTEMA</title>
 </head>
 <body>
-    
+    <h1>PAINEL DO ADMINISTRADOR DO SISTEMA</h1>
+    <main>
+        <div>
+            @include('usuarios')
+        </div>
+
+    </main>
 </body>
 </html>
