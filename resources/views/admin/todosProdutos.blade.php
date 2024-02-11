@@ -37,6 +37,23 @@ while($linha = $statement->fetchAll(PDO::FETCH_ASSOC)){
 </head>
 <body>
     <main>
+        <h2>Registrar Algum Produto Novo</h2>
+        <form action="todosProdutos.blade.php" method="post">
+        @csrf
+        <label for="categoria">Categoria: </label>
+        <input type="text" name="categoria" id="categoria">
+        <button type="submit">ENVIAR</button>
+        </form>
+
+        @php
+        $categoria = filter_input(INPUT_POST,'categoria', FILTER_SANITIZE_STRING);
+        $insert = $pdo->prepare('
+        INSERT INTO itens
+        (categoria)
+        VALUES
+        ({$categoria})');
+        $insert->execute();
+        @endphp 
 
         <table>
             <thead>
@@ -65,25 +82,25 @@ while($linha = $statement->fetchAll(PDO::FETCH_ASSOC)){
             <tbody>
                 @foreach($produtos as $produto)
                 <tr>
-                    <td>{{$produto['id']}}</td>
-                    <td>{{$produto['usuario_id']}}</td>
-                    <td>{{$produto['categoria']}}</td>
-                    <td>{{$produto['descricao']}}</td>
-                    <td>{{$produto['fotografia']}}</td>
-                    <td>{{$produto['data_catalogado']}}</td>
-                    <td>{{$produto['data_atualizado']}}</td>
-                    <td>{{$produto['disponivel']}}</td>
-                    <td>{{$produto['preco_dia']}}</td>
-                    <td>{{$produto['minimo_dias']}}</td>
-                    <td>{{$produto['quantos_dias']}}</td>
-                    <td>{{$produto['pagamento']}}</td>
-                    <td>{{$produto['pagamento_dia']}}</td>
-                    <td>{{$produto['data_inicio_contrato']}}</td>
-                    <td>{{$produto['data_conclusao_contrato']}}</td>
-                    <td>{{$produto['data_prevista_termino']}}</td>
-                    <td>{{$produto['data_efetiva_devolucao']}}</td>
-                    <td>{{$produto['avaliado_nota']}}</td>
-                    <td>{{$produto['quantas_vezes']}}</td>
+                    <td>{{$produto->id}}</td>
+                    <td>{{$produto->usuario_id}}</td>
+                    <td>{{$produto->categoria}}</td>
+                    <td>{{$produto->descricao}}</td>
+                    <td>{{$produto->fotografia}}</td>
+                    <td>{{$produto->data_catalogado}}</td>
+                    <td>{{$produto->data_atualizado}}</td>
+                    <td>{{$produto->disponivel}}</td>
+                    <td>{{$produto->preco_dia}}</td>
+                    <td>{{$produto->minimo_dias}}</td>
+                    <td>{{$produto->quantos_dias}}</td>
+                    <td>{{$produto->pagamento}}</td>
+                    <td>{{$produto->pagamento_dia}}</td>
+                    <td>{{$produto->data_inicio_contrato}}</td>
+                    <td>{{$produto->data_conclusao_contrato}}</td>
+                    <td>{{$produto->data_prevista_termino}}</td>
+                    <td>{{$produto->data_efetiva_devolucao}}</td>
+                    <td>{{$produto->avaliado_nota}}</td>
+                    <td>{{$produto->quantas_vezes}}</td>
                 </tr>
                 @endforeach
             </tbody>
@@ -91,3 +108,6 @@ while($linha = $statement->fetchAll(PDO::FETCH_ASSOC)){
     </main>
 </body>
 </html>
+
+@php
+$statement=null;

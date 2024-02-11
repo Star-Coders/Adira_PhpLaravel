@@ -6,7 +6,7 @@ use App\Http\Controllers\UsuarioModelController;
 @extends('painel')
 @section('usuarios')
     <h2>Registrar Algum Usuário Novo</h2>
-    <form action="todosUsuarios" method="post">
+    <form action="todosUsuarios.blade.php" method="post">
         @csrf
         <label for="nome">Nome completo: </label>
         <input type="text" name="nome" id="nome">
