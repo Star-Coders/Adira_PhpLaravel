@@ -14,7 +14,7 @@ class UsuarioModelController extends Controller
     {
         $usuarios = UsuarioModel::all();
         $paginas = UsuarioModel::paginate(11);
-        return view('admin/todosUsuarios',[
+        return view('admin/todos-usuarios',[
             'ELVYNGTHON.usuarios'=>$usuarios,
             'ELVYNGTHON.usuarios'=>$paginas
         ]);

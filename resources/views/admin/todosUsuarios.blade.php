@@ -1,3 +1,8 @@
+@php 
+use App\Models\UsuarioModel;
+use App\Http\Controllers\UsuarioModelController;
+@endphp
+
 @extends('painel')
 @section('usuarios')
     <h2>Registrar Algum Usuário Novo</h2>
@@ -8,9 +13,10 @@
         <button type="submit">ENVIAR</button>
     </form>
     @php
-        @registro = new UsuarioModel();
-        @registro->nome_pessoal = $request->input('nome');
-        @registro->save();
+        $registro = new UsuarioModelController();
+        $registro->store(Request $request);
+        $registro->nome_pessoal = $request->input('nome');
+        $registro->save();
         
     @endphp
     <h2>Lista de Usuários do Sistema</h2>
