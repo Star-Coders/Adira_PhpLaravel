@@ -36,7 +36,7 @@ Route::group([
 
     Route::view('todos-produtos', 'admin/todosProdutos');
 
-    Route::view('todos-usuarios', 'admin/todosUsuarios');
+    Route::view('todos-usuarios', 'admin/todosUsuarios')->name('todos-usuarios');
 });
 
 // TELAS AUTENTICAR

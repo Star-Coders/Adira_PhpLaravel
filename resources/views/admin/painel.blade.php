@@ -7,6 +7,19 @@
     <title>PAINEL DO ADMINISTRADOR DO SISTEMA</title>
 </head>
 <body>
-    
+    <h1>PAINEL DO ADMINISTRADOR DO SISTEMA</h1>
+    <main>
+        <div>
+            @include('todos-usuarios')
+        </div>
+        <div>
+            @include('todos-pedidos')
+        </div>
+        <div>
+            <label for="produtos">Listagem de todos os produtos</label>
+            <button type="submit" name="produtos">Clique para conferir</button>
+        </div>
+
+    </main>
 </body>
 </html>
