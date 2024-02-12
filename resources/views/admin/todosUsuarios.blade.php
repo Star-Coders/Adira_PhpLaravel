@@ -4,7 +4,7 @@ use App\Http\Controllers\UsuarioModelController;
 @endphp
 
 @extends('painel')
-@section('todos-usuarios')
+@section('todosUsuarios')
     <h2>Registrar Algum Usuário Novo</h2>
     <form action="todosUsuarios.blade.php" method="post">
         @csrf

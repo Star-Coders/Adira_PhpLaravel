@@ -10,10 +10,10 @@
     <h1>PAINEL DO ADMINISTRADOR DO SISTEMA</h1>
     <main>
         <div>
-            @include('todos-usuarios')
+            @include('admin.todosUsuarios')
         </div>
         <div>
-            @include('todos-pedidos')
+            @include('admin.todosPedidos')
         </div>
         <div>
             <label for="produtos">Listagem de todos os produtos</label>
