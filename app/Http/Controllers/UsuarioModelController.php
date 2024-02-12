@@ -18,6 +18,7 @@ class UsuarioModelController extends Controller
             'ELVYNGTHON.usuarios'=>$usuarios,
             'ELVYNGTHON.usuarios'=>$paginas
         ]);
+
     }
 
     /**
@@ -34,6 +35,7 @@ class UsuarioModelController extends Controller
     public function store(Request $request)
     {
         $nome = $request->input('nome');
+
     }
 
     /**
@@ -67,4 +69,16 @@ class UsuarioModelController extends Controller
     {
         //
     }
+
+    public function perfil(int $id = null) {
+        $perfil = 'usuario/perfil/{'.$id.'?}';
+
+        return $perfil;
+    }
+
+    public function paginaPerfil(int $id = null, string $perfil, array $find){
+
+        return view($perfil, $find);
+    }
+
 }

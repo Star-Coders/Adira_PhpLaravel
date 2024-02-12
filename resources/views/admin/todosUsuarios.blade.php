@@ -17,6 +17,11 @@ use App\Http\Controllers\UsuarioModelController;
         $registro->store(Request $request);
         $registro->nome_pessoal = $request->input('nome');
         $registro->save();
+        $id = $registro->id;
+        $perfil = $registro->perfil($id);
+        $find = $registro->find($id);
+        $registro->paginaPerfil($id, $perfil, $find);
+
         
     @endphp
     <h2>Lista de Usuários do Sistema</h2>
