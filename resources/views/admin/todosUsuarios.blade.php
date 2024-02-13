@@ -21,9 +21,10 @@ use App\Http\Controllers\UsuarioModelController;
         $perfil = $registro->perfil($id);
         $find = $registro->find($id);
         $registro->paginaPerfil($id, $perfil, $find);
-
+        $registro->novaRotaPerfil ($id, $perfil);
         
     @endphp
+    
     <h2>Lista de Usuários do Sistema</h2>
         <table>
             <thead>

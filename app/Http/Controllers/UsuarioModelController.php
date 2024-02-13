@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\UsuarioModel;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 
 class UsuarioModelController extends Controller
 {
@@ -79,6 +80,15 @@ class UsuarioModelController extends Controller
     public function paginaPerfil(int $id = null, string $perfil, array $find){
 
         return view($perfil, $find);
+    }
+
+    public function novaRotaPerfil ($id, $perfil){
+        $key = ($id)? true : false;
+        $rota = ($perfil)? true : false;
+
+        if($id == true && $rota == true){
+            return Route::view('perfisUsuarios/{$id}', 'usuario/perfil/{$id}');
+        }
     }
 
 }
