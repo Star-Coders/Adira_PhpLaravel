@@ -7,5 +7,20 @@
 </head>
 <body>
     <h1>TELA DE HOMEPAGE E CATÁLOGO</h1>
+    <main>
+
+        <div class="container">
+            @include('catalogo.carouselGeral');
+        </div>
+
+        <div class="container">
+            @include('catalogo.carouselAvaliados');
+        </div>
+
+        <div class="container">
+            @include('catalogo.carouselMaisAlugados')
+        </div>
+    </main>
+
 </body>
 </html>
