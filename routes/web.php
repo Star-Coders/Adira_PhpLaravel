@@ -46,7 +46,7 @@ Route::group([
 ], function(){
     Route::view('cadastrarUsuario', 'autenticar/cadastrarUsuarios')->name('cadastrarUsuario');
 
-    Route::view('login', 'autenticar/login')->name('login');
+    Route::view('login', '/autenticar/login')->name('login');
 
     Route::view('recuperarSenha', 'autenticar/recuperarSenha')->name('recupearSenha');
 });
