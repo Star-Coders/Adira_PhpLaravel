@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
 
@@ -49,6 +51,12 @@ Route::group([
     Route::view('login', 'autenticar/login')->name('login');
 
     Route::view('recuperarSenha', 'autenticar/recuperarSenha')->name('recupearSenha');
+    
+    //código copiado do projeto BLOG do professor
+    Route::view('/admin/login', 'admin.login.form')->name('login.form');
+    Route::post('/admin/auth', [LoginController::class, 'auth'])->name('login.auth');
+    Route::get('admin/logout', [LoginController::class, 'logout']);
+    Route::get('/admin', [DashboardController::class, 'index'])->middleware('auth');
 });
 
 // TELAS PRODUTOS
