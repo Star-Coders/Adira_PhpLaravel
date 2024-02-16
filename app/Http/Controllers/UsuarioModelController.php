@@ -86,7 +86,7 @@ class UsuarioModelController extends Controller
         $key = ($id)? true : false;
         $rota = ($perfil)? true : false;
 
-        if($id == true && $rota == true){
+        if($key == true && $rota == true){
             return Route::view('perfisUsuarios/{$id}', 'usuario/perfil/{$id}');
         }
     }

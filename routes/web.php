@@ -78,4 +78,4 @@ Route::group([
     Route::view('perfil','usuario/perfil');
 });
 // TELA DO PERFIL DO USUARIO
-Route::get('/perfisUsuarios', [UsuarioModelController::class, $perfil])->name('perfil');
+Route::get('/perfisUsuarios', [UsuarioModelController::class, 'usuario/perfil/{$id}'])->name('perfil');
