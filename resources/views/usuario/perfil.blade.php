@@ -47,6 +47,15 @@
                 @endforeach
             </tbody>
         </table>
+
+        <div>
+            @include('usuario.listarPedidos')
+        </div>
+
+        <div>
+            <label for="produtos">Lista dos seus produtos</label>
+            <button type="submit" name="produtos" href="/listarProdutos">Clique para conferir</button>
+        </div>
     </main>
 </body>
 </html>
