@@ -17,7 +17,7 @@
         </div>
         <div>
             <label for="produtos">Listagem de todos os produtos</label>
-            <button type="submit" name="produtos">Clique para conferir</button>
+            <button type="submit" name="produtos" href="/todosProdutos">Clique para conferir</button>
         </div>
 
     </main>
