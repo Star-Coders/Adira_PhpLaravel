@@ -42,21 +42,23 @@ Route::group([
 });
 
 // TELAS AUTENTICAR
+
+//código copiado do projeto BLOG do professor
+Route::view('/admin/login', 'admin.login.form')->name('login.form');
+Route::post('/admin/auth', [LoginController::class, 'auth'])->name('login.auth');
+Route::get('/admin/logout', [LoginController::class, 'logout']);
+Route::get('/admin', [DashboardController::class, 'index'])->middleware('auth');
+
+
 Route::group([
     'prefix'=>'autenticar',
     'as'=>'autenticar.'
 ], function(){
-    Route::view('cadastrarUsuario', 'autenticar/cadastrarUsuarios')->name('cadastrarUsuario');
+    Route::view('cadastrarUsuario', 'autenticar/cadastrarUsuario')->name('cadastrarUsuario');
 
     Route::view('login', 'autenticar/login')->name('login');
 
-    Route::view('recuperarSenha', 'autenticar/recuperarSenha')->name('recupearSenha');
-    
-    //código copiado do projeto BLOG do professor
-    Route::view('/admin/login', 'admin.login.form')->name('login.form');
-    Route::post('/admin/auth', [LoginController::class, 'auth'])->name('login.auth');
-    Route::get('admin/logout', [LoginController::class, 'logout']);
-    Route::get('/admin', [DashboardController::class, 'index'])->middleware('auth');
+    Route::view('recuperarSenha', 'autenticar/recuperarSenha')->name('recuperarSenha');
 });
 
 // TELAS PRODUTOS
