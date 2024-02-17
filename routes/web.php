@@ -19,6 +19,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/faturamento', 'FaturamentoController@index');
+
 // TELA HOME
 Route::get('/home', function(){
     return view('catalogo/home');
@@ -79,3 +81,5 @@ Route::group([
 });
 // TELA DO PERFIL DO USUARIO
 Route::get('/perfisUsuarios', [UsuarioModelController::class, 'usuario/perfil/{$id}'])->name('perfil');
+Route::get('/faturamento', 'FaturamentoController@index');
+
