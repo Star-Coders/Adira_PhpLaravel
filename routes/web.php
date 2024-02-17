@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UsuarioModelController;
 use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/faturamento', 'FaturamentoController@index');
 
 // TELA HOME
 Route::get('/home', function(){
@@ -37,6 +40,8 @@ Route::group([
     Route::view('todos-produtos', 'admin/todosProdutos');
 
     Route::view('todos-usuarios', 'admin/todosUsuarios')->name('todos-usuarios');
+
+    Route::view('perfis-usuarios', 'admin/perfisUsuarios');
 });
 
 // TELAS AUTENTICAR
@@ -68,9 +73,13 @@ Route::group([
     'prefix'=>'usuario',
     'as'=>'usuario.'
 ], function(){
-    Route::view('listar-pedidos', 'usuario/listarPedidos');
+    Route::view('listar-pedidos', 'usuario/listarPedidos')->name('listar-pedidos');
 
     Route::view('listar-produtos', 'usuario/listarProdutos');
 
     Route::view('perfil','usuario/perfil');
 });
+// TELA DO PERFIL DO USUARIO
+Route::get('/perfisUsuarios', [UsuarioModelController::class, 'usuario/perfil/{$id}'])->name('perfil');
+Route::get('/faturamento', 'FaturamentoController@index');
+

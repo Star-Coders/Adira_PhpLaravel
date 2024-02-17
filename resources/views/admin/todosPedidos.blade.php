@@ -4,8 +4,8 @@ use App\Http\Controllers\PedidoModelController;
 @endphp
 
 @extends('painel')
-@section('todos-pedidos')
-    <h2>Registrar Algum Usuário Novo</h2>
+@section('todosPedidos')
+    <h2>Registrar Algum Pedido Novo</h2>
     <form action="todosPedidos.blade.php" method="post">
         @csrf
         <label for="id">ID: </label>

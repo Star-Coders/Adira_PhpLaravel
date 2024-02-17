@@ -1,3 +1,94 @@
-<h1>
-    TELA DO PERFIL DA CONTA DO USUARIO LOCADOR/CLIENTE 
-</h1>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Perfil de Usuário</title>
+</head>
+<body>
+    <main>
+        <h1>Dados do usuario</h1>
+        @php
+            $dados = UsuarioModelController::find('id');
+            $info = function($dados){
+                $nome = $dados->nome_pessoal;
+                $cpf = $dados->cpf;
+                $email = $dados->email;
+                $endereco = $dados->endereco;
+
+                $array = [$nome, $cpf, $email, $endereco];
+
+                return $array
+            }
+            $usuario = $info();
+        @endphp
+        <table class='table'>
+            <thead>
+                <td>Nome Completo</td>
+                <td>CPF</td>
+                <td>E-mail</td>
+                <td>Endereço</td>
+            </thead>
+            <tbody>
+                @foreach ($usuario as $u)
+                <td>
+                   {{$u->nome}} 
+                </td>
+                <td>
+                    {{$u->cpf}} 
+                 </td>
+                 <td>
+                    {{$u->email}} 
+                 </td>
+                 <td>
+                    {{$u->endereco}} 
+                 </td>                    
+                @endforeach
+            </tbody>
+        </table>
+
+        <div>
+            @yield('produtos.pedir-aluguel')
+        </div>
+        <div>
+            @include('produtos.fazer-aluguel-locador')
+            <table class="table">
+                <thead>
+                    <th>Locador</th>
+                    <th>ID do Pedido</th>
+                    <th>Descrição do Produto</th>
+                </thead>
+                <tbody>
+                    <td>{{$usuario->nome_pessoal}}</td>
+                    <td>{{$pedido_models->id}}</td>
+                    <td>{{$itens->descricao}}</td>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            @include('produtos.fazer-aluguel-cliente')
+            <table class="table">
+                <thead>
+                    <th>Cliente</th>
+                    <th>ID do Pedido</th>
+                    <th>Descrição do Produto</th>
+                </thead>
+                <tbody>
+                    <td>{{$usuario->nome_pessoal}}</td>
+                    <td>{{$pedido_models->id}}</td>
+                    <td>{{$itens->descricao}}</td>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            @include('produtos.listar-pedidos')
+        </div>
+
+        <div>
+            <label for="produtos">Lista dos seus produtos</label>
+            <button type="submit" name="produtos" href="/listarProdutos">Clique para conferir</button>
+        </div>
+    </main>
+</body>
+</html>

@@ -34,7 +34,7 @@ $statement->execute();
 
     @for($i=0; $i<sizeof($carousel); $i++)
 
-      @foreach($carousel[$i] as $card){
+      @foreach($carousel[$i] as $card)
         @php $active = ($i == 0)? 'active' : ''; @endphp
 
         <div class="carousel-item @php echo $active @endphp">
@@ -42,8 +42,8 @@ $statement->execute();
               <img src="@php echo $card['fotografia'] @endphp" class="card-img-top" alt="Produto para alugar.">
             <div class="card-body">
               <h5 class="card-title">@php echo $card['categoria']; @endphp</h5>
-              <p class="card-text">@php echo $card['descricao']; @endphp</p>
-              <a href="solicitar-produto" class="btn btn-primary"><strong>QUERO ALUGAR</strong></a>
+              <p class="card-text">@php echo $card->descricao; @endphp</p>
+              <a href="{{route('solicitar-produto', $card->id)}}" class="btn btn-primary"><strong>QUERO ALUGAR</strong></a>
             </div>
           </div>
         </div>
