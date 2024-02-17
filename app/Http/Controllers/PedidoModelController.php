@@ -41,7 +41,7 @@ class PedidoModelController extends Controller
      */
     public function show(PedidoModel $pedidoModel)
     {
-        //
+        // 
     }
 
     /**
@@ -66,5 +66,14 @@ class PedidoModelController extends Controller
     public function destroy(PedidoModel $pedidoModel)
     {
         //
+    }
+
+    public function lista($usuario_id){
+
+        $listando = PedidoModel::where('usuario_id');
+        $paginaLista = PedidoModel::paginate(11);
+
+        return $listar = [$listando, $paginaLista];
+
     }
 }

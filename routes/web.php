@@ -71,7 +71,7 @@ Route::group([
     'prefix'=>'usuario',
     'as'=>'usuario.'
 ], function(){
-    Route::view('listar-pedidos', 'usuario/listarPedidos');
+    Route::view('listar-pedidos', 'usuario/listarPedidos')->name('listar-pedidos');
 
     Route::view('listar-produtos', 'usuario/listarProdutos');
 

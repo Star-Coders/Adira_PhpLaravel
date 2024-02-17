@@ -4,14 +4,10 @@ use App\Http\Controllers\PedidoModelController;
 @endphp
 
 @extends('perfil')
-@section('listarPedidos')
-    <h2>Registrar Algum Pedido Novo</h2>
-    <form action="listarPedidos.blade.php" method="post">
-        @csrf
-        <label for="id">ID: </label>
-        <input type="number" name="id" id="id">
-        <button type="submit">ENVIAR</button>
-    </form>
+@section('pedir-aluguel')
+    <div>
+        @yield('solicitar-produto')
+    </div>
     @php
         $registro = new PedidoModelController();
         $registro->store(Request $request);
@@ -20,4 +16,16 @@ use App\Http\Controllers\PedidoModelController;
         
     @endphp
 
+@endsection
+
+@section('listar-pedidos')
+    @php
+        $usuario_id = PedidoModel::find('usuario_id');
+        lista($usuario_id);
+    @endphp
+    <table class='table'>
+    @foreach ($listar as $l)
+        <tr>{{$l->id}}</tr>
+    @endforeach
+    </table> 
 @endsection

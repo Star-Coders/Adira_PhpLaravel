@@ -49,7 +49,40 @@
         </table>
 
         <div>
-            @include('usuario.listarPedidos')
+            @yield('produtos.pedir-aluguel')
+        </div>
+        <div>
+            @include('produtos.fazer-aluguel-locador')
+            <table class="table">
+                <thead>
+                    <th>Locador</th>
+                    <th>ID do Pedido</th>
+                    <th>Descrição do Produto</th>
+                </thead>
+                <tbody>
+                    <td>{{$usuario->nome_pessoal}}</td>
+                    <td>{{$pedido_models->id}}</td>
+                    <td>{{$itens->descricao}}</td>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            @include('produtos.fazer-aluguel-cliente')
+            <table class="table">
+                <thead>
+                    <th>Cliente</th>
+                    <th>ID do Pedido</th>
+                    <th>Descrição do Produto</th>
+                </thead>
+                <tbody>
+                    <td>{{$usuario->nome_pessoal}}</td>
+                    <td>{{$pedido_models->id}}</td>
+                    <td>{{$itens->descricao}}</td>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            @include('produtos.listar-pedidos')
         </div>
 
         <div>
