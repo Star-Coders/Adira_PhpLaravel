@@ -29,11 +29,23 @@
                                     <input type="password" class="form-control" id="password"  name="password" required>
                                 </div>
 
-                                <div class="mb-3">
-                                    <button type="submit" class="btn btn-outline-success">
-                                        ENTRAR
-                                    </button>
+                                <div class="row">
+                                    <div class="mb-3 d-flex justify-content-start">
+                                        <!-- Botão ENTRAR -->
+                                        <button type="submit" class="btn btn-outline-success"> <!-- me-2 adiciona uma margem à direita -->
+                                            ENTRAR
+                                        </button>
+                                
+                                        <!-- Espaço fictício para manter o botão Cadastrar-se centralizado -->
+                                        <div class="flex-grow-1 text-end">
+                                            <!-- Botão Cadastrar-se -->
+                                            <a href="{{ route('cadastrarUsuario') }}" class="btn btn-outline-primary">
+                                                Cadastrar-se
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
+                                
                             </form>
                         </div>
                       </div>
