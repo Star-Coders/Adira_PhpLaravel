@@ -4,7 +4,7 @@ use App\Http\Controllers\UsuarioModelController;
 @endphp
 
 @extends('painel')
-@section('todos-usuarios')
+@section('todosUsuarios')
     <h2>Registrar Algum Usuário Novo</h2>
     <form action="todosUsuarios.blade.php" method="post">
         @csrf
@@ -17,8 +17,14 @@ use App\Http\Controllers\UsuarioModelController;
         $registro->store(Request $request);
         $registro->nome_pessoal = $request->input('nome');
         $registro->save();
+        $id = $registro->id;
+        $perfil = $registro->perfil($id);
+        $find = $registro->find($id);
+        $registro->paginaPerfil($id, $perfil, $find);
+        $registro->novaRotaPerfil ($id, $perfil);
         
     @endphp
+    
     <h2>Lista de Usuários do Sistema</h2>
         <table>
             <thead>

@@ -43,7 +43,7 @@ $statement->execute();
             <div class="card-body">
               <h5 class="card-title">@php echo $card['categoria']; @endphp</h5>
               <p class="card-text">@php echo $card['descricao']; @endphp</p>
-              <a href="solicitar-produto" class="btn btn-primary"><strong>QUERO ALUGAR</strong></a>
+              <a href="{{route('solicitar-produto', $card->id)}}" class="btn btn-primary"><strong>QUERO ALUGAR</strong></a>
             </div>
           </div>
         </div>
