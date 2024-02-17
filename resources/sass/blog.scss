@@ -1,0 +1,24 @@
+body{
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+main{
+    flex: 1 0 auto;
+}
+.footer{
+    width: 100vh;
+    position: relative;
+    bottom: 0;
+}
+
+.card{
+    .card-action{
+        padding: 0 20px 10px 20px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .card-body{
+        min-height: 150px;
+    }
+}

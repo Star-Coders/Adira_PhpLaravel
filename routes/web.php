@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\UsuarioModelController;
+use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/faturamento', 'FaturamentoController@index');
 
 // TELA HOME
 Route::get('/home', function(){
@@ -43,15 +47,24 @@ Route::group([
 });
 
 // TELAS AUTENTICAR
+
+//código copiado do projeto BLOG do professor
+Route::view('/login', 'admin.login.form')->name('login.form');
+Route::post('/admin/auth', [LoginController::class, 'auth'])->name('login.auth');
+Route::get('/admin/logout', [LoginController::class, 'logout']);
+Route::get('/admin', [DashboardController::class, 'index'])->middleware('auth');
+Route::view('cadastrarUsuario', 'autenticar/cadastrarUsuario')->name('cadastrarUsuario');
+
+
 Route::group([
     'prefix'=>'autenticar',
     'as'=>'autenticar.'
 ], function(){
-    Route::view('cadastrar-usuario', 'autenticar/cadastrarUsuario');
+    Route::view('cadastrarUsuario', 'autenticar/cadastrarUsuarios')->name('cadastrarUsuario');
 
     Route::view('login', 'autenticar/login');
 
-    Route::view('recuperar-senha', 'autenticar/recuperarSenha');
+    Route::view('recuperarSenha', 'autenticar/recuperarSenha')->name('recupearSenha');
 });
 
 // TELAS PRODUTOS
@@ -79,3 +92,5 @@ Route::group([
 });
 // TELA DO PERFIL DO USUARIO
 Route::get('/perfisUsuarios', [UsuarioModelController::class, 'usuario/perfil/{$id}'])->name('perfil');
+Route::get('/faturamento', 'FaturamentoController@index');
+
