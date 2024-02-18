@@ -1,0 +1,60 @@
+html {
+    height: 100%;
+    width: 100%;
+  }
+  footer{
+    display:flex;
+    width:100vw;
+    height:10vw;
+    background-color: #EDE293;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .container-footer{
+    display:flex;
+    width:100%;
+    justify-content: space-around;
+    align-items: center;
+  }
+  ul{
+    list-style: none;
+  }
+  .align-p{
+    display:flex;
+    margin:0;
+    justify-content: center;
+  }
+  @media only screen and (min-width: 769px) {
+    body {
+      font-size: 18px;
+      padding-bottom:10vw;
+    }
+    .centralize{
+      display:flex;
+      justify-content:center;
+    }
+    .list{
+      gap:15vw;
+    }
+    #navbarNav{
+      display: flex;
+      justify-content: center;
+    }
+    #login{
+      background-color: #ede293;
+      border-radius:5px;
+      padding:15px;
+    }
+    #search{
+      background:#ede293;
+      width:20vw;
+    }
+    .AllNav{
+      position:fixed !important;
+      width : 100vw;
+      margin-bottom:30px;
+    }
+  
+  }
+  
+  
