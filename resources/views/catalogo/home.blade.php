@@ -9,10 +9,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 </head>
 <body class="bg-warning bg-gradient">
-    <h1>TELA DE HOMEPAGE E CATÁLOGO</h1>
+    @include('layouts.admin.nav')
     <main>
 
-        <div class="container">
+        <div class="container p-4">
             @include('catalogo.carouselGeral')
         </div>
 
