@@ -76,11 +76,11 @@ Route::group([
     'prefix'=>'produtos',
     'as'=>'produtos.'
 ], function(){
-    Route::view('catalogar-produto','produtos/catalogarProduto');
+    Route::view('produtos.catalogar-produto','produtos/catalogarProduto');
 
-    Route::view('fazer-aluguel', 'produtos/fazerAluguel');
+    Route::view('produtos.fazer-aluguel', 'produtos/fazerAluguel');
 
-    Route::view('solicitar-produto', 'produtos/solicitarProduto')->name('solicitar-produto');
+    Route::view('produtos.solicitar-produto', 'produtos/solicitarProduto')->name('solicitar-produto');
 });
 
 // TELAS USUARIO
