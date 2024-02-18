@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADIRA: Aluguel Colaborativo e Economia Compartilhada</title>
+    <title>Adira: Aluguel Colaborativo e Economia Compartilhada</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 </head>
-<body>
+<body class="bg-warning bg-gradient">
     <h1>TELA DE HOMEPAGE E CATÁLOGO</h1>
     <main>
 
         <div class="container">
-            @include('catalogo.carouselGeral');
+            @include('catalogo.carouselGeral')
         </div>
 
         <div class="container">
-            @include('catalogo.carouselAvaliados');
+            @include('catalogo.carouselAvaliados')
         </div>
 
         <div class="container">
