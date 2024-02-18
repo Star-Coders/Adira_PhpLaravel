@@ -3,6 +3,9 @@
 use App\Http\Controllers\UsuarioModelController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\FaturamentoController;
+use App\Http\Controllers\PedidoModelController;
+use App\Http\Controllers\ProdutoModelController;
 use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +24,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/faturamento', [FaturamentoController::class, 'index']);
 Route::get('/faturamento', 'FaturamentoController@index');
 
 // TELA HOME
@@ -92,5 +96,6 @@ Route::group([
 });
 // TELA DO PERFIL DO USUARIO
 Route::get('/perfisUsuarios', [UsuarioModelController::class, 'usuario/perfil/{$id}'])->name('perfil');
-Route::get('/faturamento', 'FaturamentoController@index');
+
+
 
