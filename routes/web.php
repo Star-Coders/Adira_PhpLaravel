@@ -25,7 +25,7 @@ Route::get('/', function () {
 });
 
 Route::get('/faturamento', [FaturamentoController::class, 'index']);
-Route::get('/faturamento', 'FaturamentoController@index');
+// Route::get('/faturamento', 'FaturamentoController@index');
 
 // TELA HOME
 Route::get('/home', function(){
