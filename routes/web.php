@@ -19,3 +19,4 @@ Route::get('/', function () {
 
 Route::get('/faturamento', 'FaturamentoController@index');
 
+
