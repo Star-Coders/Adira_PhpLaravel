@@ -15,6 +15,7 @@
                 <div class="col col-sm-12 col-md-6">
                     <div class="card">
                         <div class="container mt-5">
+                            <img src="{{ asset('images/FigJam Basics.png') }}" alt="Descrição da imagem" width="150px" class="mx-auto d-block">
                             <h2>Cadastro de Usuário</h2>
                             <form>
                                 <div class="row">
