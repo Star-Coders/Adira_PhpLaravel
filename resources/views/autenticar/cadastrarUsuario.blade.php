@@ -17,7 +17,8 @@
                         <div class="container mt-5">
                             <img src="{{ asset('images/FigJam Basics.png') }}" alt="Descrição da imagem" width="150px" class="mx-auto d-block">
                             <h2>Cadastro de Usuário</h2>
-                            <form>
+                            <form action="{{route('user.store')}}" method="POST">
+                                @csrf
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <label for="nome" class="form-label">Nome</label>

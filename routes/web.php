@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\admin\DashboardController;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\admin\LoginController;
+use App\Http\Controllers\UserController;
 use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
 
@@ -49,6 +50,8 @@ Route::post('/admin/auth', [LoginController::class, 'auth'])->name('login.auth')
 Route::get('/admin/logout', [LoginController::class, 'logout']);
 Route::get('/admin', [DashboardController::class, 'index'])->middleware('auth');
 Route::view('cadastrar-usuario', 'autenticar/cadastrarUsuario')->name('cadastrarUsuario');
+Route::post('/user', [UserController::class, 'store'])->name('user.store');
+
 
 
 Route::group([
