@@ -2,10 +2,10 @@
 
 use App\Http\Controllers\UsuarioModelController;
 use App\Http\Controllers\admin\DashboardController;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\admin\LoginController;
 use App\Http\Controllers\FaturamentoController;
-use App\Http\Controllers\PedidoModelController;
 use App\Http\Controllers\ProdutoModelController;
+use App\Http\Controllers\UserController;
 use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
 
@@ -57,14 +57,16 @@ Route::view('/login', 'admin.login.form')->name('login.form');
 Route::post('/admin/auth', [LoginController::class, 'auth'])->name('login.auth');
 Route::get('/admin/logout', [LoginController::class, 'logout']);
 Route::get('/admin', [DashboardController::class, 'index'])->middleware('auth');
-Route::view('cadastrarUsuario', 'autenticar/cadastrarUsuario')->name('cadastrarUsuario');
+Route::view('cadastrar-usuario', 'autenticar/cadastrarUsuario')->name('cadastrarUsuario');
+Route::post('/user', [UserController::class, 'store'])->name('user.store');
+
 
 
 Route::group([
     'prefix'=>'autenticar',
     'as'=>'autenticar.'
 ], function(){
-    Route::view('cadastrarUsuario', 'autenticar/cadastrarUsuarios')->name('cadastrarUsuario');
+    //Route::view('cadastrarUsuario', 'autenticar/cadastrarUsuario')->name('cadastrarUsuario');
 
     Route::view('login', 'autenticar/login');
 
