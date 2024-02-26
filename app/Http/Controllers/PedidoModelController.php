@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PedidoModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PedidoModelController extends Controller
 {
@@ -14,9 +15,9 @@ class PedidoModelController extends Controller
     {
         $pedidos = PedidoModel::all();
         $paginas = PedidoModel::paginate(11);
-        return view('admin/todos-pedidos',[
-            'ELVYNGTHON.pedidos'=>$pedidos,
-            'ELVYNGTHON.pedidos'=>$paginas
+        return view("admin/todos-pedidos",[
+            "ELVYNGTHON.pedidos"=>$pedidos,
+            "ELVYNGTHON.pedidos"=>$paginas
         ]);
     }
 
@@ -25,7 +26,7 @@ class PedidoModelController extends Controller
      */
     public function create()
     {
-        //
+        return view("solicitarProduto");
     }
 
     /**
@@ -33,7 +34,11 @@ class PedidoModelController extends Controller
      */
     public function store(Request $request)
     {
-        $id = $request->input('id');
+        $inserir = $request->all();
+
+        DB::table("itens")->insert($inserir);
+
+        return redirect()->route('listar-pedidos');
     }
 
     /**
@@ -70,10 +75,11 @@ class PedidoModelController extends Controller
 
     public function lista($usuario_id){
 
-        $listando = PedidoModel::where('usuario_id');
+        $listando = PedidoModel::where("usuario_id");
         $paginaLista = PedidoModel::paginate(11);
 
         return $listar = [$listando, $paginaLista];
 
     }
+
 }

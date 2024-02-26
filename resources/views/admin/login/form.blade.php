@@ -15,6 +15,7 @@
                     <div class="card">
                         <div class="card-header text-center">
                             <h5 class="card-title">LOGIN</h5>
+                            <img src="{{ asset('images/FigJam Basics.png') }}" alt="Descrição da imagem" width="150px">
                         </div>
                         <div class="card-body">
                             <form action="{{route('login.auth')}}" method='POST'>

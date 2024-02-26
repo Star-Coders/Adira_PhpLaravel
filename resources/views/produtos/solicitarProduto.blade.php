@@ -2,7 +2,7 @@
 @section('title', 'Faça o seu pedido')
 @section('solicitar-produto')
 
-<form method="post" action="{{ route('listar-pedidos', $itens->id) }}">
+<form method="post" action="{{ route('listar-pedidos') }}">
 
     @csrf
 

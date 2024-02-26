@@ -65,9 +65,19 @@ class ProdutoModelController extends Controller
 
     public function usuarioId(){
 
-        $usuario_id = ProdutoModel::find('usuario_id');
+        $usuario_id = ProdutoModel::find("usuario_id");
 
         return $usuario_id;
 
+    }
+
+    public function solicitar(){
+
+        $id = null;
+        $solicitar = ProdutoModel::where("id", $id);
+
+        return view("produtos/solicitarProduto", [
+            "solicitar" => $solicitar
+        ]);
     }
 }
