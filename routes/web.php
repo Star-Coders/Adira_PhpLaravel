@@ -81,6 +81,7 @@ Route::group([
     Route::view('produtos.fazer-aluguel', 'produtos/fazerAluguel');
 
     Route::view('produtos.solicitar-produto', 'produtos/solicitarProduto')->name('solicitar-produto');
+    Route::get('produtos/solicitarProduto/{id}', [ProdutoModelController::class, 'solicitar']);
 });
 
 // TELAS USUARIO
