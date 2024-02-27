@@ -102,3 +102,4 @@ Route::get('/perfisUsuarios', [UsuarioModelController::class, 'usuario/perfil/{$
 
 
 
+
