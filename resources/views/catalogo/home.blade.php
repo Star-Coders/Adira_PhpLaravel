@@ -31,31 +31,32 @@
     @include('layouts.admin.nav')
     <main>
 
-        <div class="container p-4 d-flex align-content-center">
-            @include('catalogo.carouselGeral')
+        <div class="container p-4">
+            <h2>Catálogo Geral das Opções Disponíveis para Aluguel</h2>
+            @include('catalogo.cardGeral')
         </div>
-        
-        <div class="container">
-            @include('catalogo.carouselAvaliados')
+        <div class="container p-4">
+            <h2>Produtos Mais Bem-Avaliados</h2>
+            @include('catalogo.cardAvaliados')
         </div>
-        
-        <div class="container">
-            @include('catalogo.carouselMaisAlugados')
+        <div class="container p-4">
+            <h2>Produtos Mais Alugados</h2>
+            @include('catalogo.cardMaisAlugados')
         </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 </body>
 </html>
-{{-- <div class="container p-4">
-    <h2>Catálogo Geral das Opções Disponíveis para Aluguel</h2>
-    @include('catalogo.cardGeral')
-</div>
-<div class="container p-4">
-    <h2>Produtos Mais Bem-Avaliados</h2>
-    @include('catalogo.cardAvaliados')
-</div>
-<div class="container p-4">
-    <h2>Produtos Mais Alugados</h2>
-    @include('catalogo.cardMaisAlugados')
-</div> --}}
+
+    {{-- <div class="container p-4 d-flex align-content-center">
+        @include('catalogo.carouselGeral')
+    </div>
+    
+    <div class="container">
+        @include('catalogo.carouselAvaliados')
+    </div>
+    
+    <div class="container">
+        @include('catalogo.carouselMaisAlugados')
+    </div> --}}

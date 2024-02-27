@@ -37,7 +37,7 @@ $statement->execute();
         @foreach($carousel[$i] as $card)
 
                     <div class="card">
-                        {{-- <img src="@php echo $card['fotografia'] @endphp" class="card-img-top" alt="Produto para alugar."> --}}
+                        <img src="/img/{{$card['fotografia']}}" class="card-img-top" alt="Produto para alugar.">
                         <div class="card-body">
                             <h5 class="card-title">@php echo $card['categoria']; @endphp</h5>
                             <p class="card-text">@php echo $card['descricao']; @endphp</p>
