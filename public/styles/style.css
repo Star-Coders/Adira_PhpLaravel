@@ -2,7 +2,28 @@ html {
     height: 100%;
     width: 100%;
   }
-  
+  footer{
+    display:flex;
+    width:100vw;
+    height:10vw;
+    background-color: #EDE293;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .container-footer{
+    display:flex;
+    width:100%;
+    justify-content: space-around;
+    align-items: center;
+  }
+  ul{
+    list-style: none;
+  }
+  .align-p{
+    display:flex;
+    margin:0;
+    justify-content: center;
+  }
   @media only screen and (min-width: 769px) {
     body {
       font-size: 18px;
