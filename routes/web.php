@@ -1,8 +1,19 @@
 <?php
 
 use App\Http\Controllers\UsuarioModelController;
+use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\LoginController;
+use App\Http\Controllers\FaturamentoController;
+use App\Http\Controllers\ProdutoModelController;
+use App\Http\Controllers\UserController;
 use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\ProductReturnController;
+
+Route::get('/return-product', [ProductReturnController::class, 'showReturnForm'])->name('return-product');
+Route::post('/return-product', [ProductReturnController::class, 'processReturn']);
+
 
 /*
 |--------------------------------------------------------------------------
@@ -10,8 +21,8 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
 |
 */
 
@@ -19,7 +30,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/faturamento', 'FaturamentoController@index');
+Route::get('/devolucao', function () {
+    return view('devolucao');
+});
+
+Route::get('/adicionar-produto', [ProdutoController::class, 'create']);
+Route::post('/salvar-produto', [ProdutoController::class, 'store'])->name('salvar.produto');
+
+Route::get('/faturamento', [FaturamentoController::class, 'index']);
+// Route::get('/faturamento', 'FaturamentoController@index');
 
 // TELA HOME
 Route::get('/home', function(){
@@ -45,15 +64,26 @@ Route::group([
 });
 
 // TELAS AUTENTICAR
+
+//código copiado do projeto BLOG do professor
+Route::view('/login', 'admin.login.form')->name('login.form');
+Route::post('/admin/auth', [LoginController::class, 'auth'])->name('login.auth');
+Route::get('/admin/logout', [LoginController::class, 'logout']);
+Route::get('/admin', [DashboardController::class, 'index'])->middleware('auth');
+Route::view('cadastrar-usuario', 'autenticar/cadastrarUsuario')->name('cadastrarUsuario');
+Route::post('/user', [UserController::class, 'store'])->name('user.store');
+
+
+
 Route::group([
     'prefix'=>'autenticar',
     'as'=>'autenticar.'
 ], function(){
-    Route::view('cadastrar-usuario', 'autenticar/cadastrarUsuario');
+    //Route::view('cadastrarUsuario', 'autenticar/cadastrarUsuario')->name('cadastrarUsuario');
 
     Route::view('login', 'autenticar/login');
 
-    Route::view('recuperar-senha', 'autenticar/recuperarSenha');
+    Route::view('recuperarSenha', 'autenticar/recuperarSenha')->name('recupearSenha');
 });
 
 // TELAS PRODUTOS
@@ -61,11 +91,12 @@ Route::group([
     'prefix'=>'produtos',
     'as'=>'produtos.'
 ], function(){
-    Route::view('catalogar-produto','produtos/catalogarProduto');
+    Route::view('produtos.catalogar-produto','produtos/catalogarProduto');
 
-    Route::view('fazer-aluguel', 'produtos/fazerAluguel');
+    Route::view('produtos.fazer-aluguel', 'produtos/fazerAluguel');
 
-    Route::view('solicitar-produto', 'produtos/solicitarProduto')->name('solicitar-produto');
+    Route::view('produtos.solicitar-produto', 'produtos/solicitarProduto')->name('solicitar-produto');
+    Route::get('produtos/solicitarProduto/{id}', [ProdutoModelController::class, 'solicitar']);
 });
 
 // TELAS USUARIO
@@ -81,5 +112,7 @@ Route::group([
 });
 // TELA DO PERFIL DO USUARIO
 Route::get('/perfisUsuarios', [UsuarioModelController::class, 'usuario/perfil/{$id}'])->name('perfil');
-Route::get('/faturamento', 'FaturamentoController@index');
+
+
+
 
