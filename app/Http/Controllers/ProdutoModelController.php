@@ -12,8 +12,9 @@ class ProdutoModelController extends Controller
      */
     public function index()
     {
+        $catalogo = ProdutoModel::inRandomOrder("id")->paginate(3);
         return view("catalogo/home", [
-            "catalogo" => ProdutoModel::inRandomOrder("id")->paginate(4)
+            "catalogo" => $catalogo
         ]);
     }
 
